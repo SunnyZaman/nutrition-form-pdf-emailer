@@ -109,7 +109,7 @@ function sendEmails(e) {
         // Prevents sending duplicates
         if (((emailSent != EMAIL_SENT) && (emailSent != EDIT_MODE)) || ((emailSent == EDIT_MODE) && isEdit)) { 
             //Get the google doc file with the Ryerson header template
-            var file = DriveApp.getFileById("1YOQArj2DsjM779O6q1TB4aVQjeRyGtoLmvh01-fWA6g");
+            var file = DriveApp.getFileById("16d4BmUZ0BrfzUNh1N4AgniIds8SolMyVxKS00Mpx1EA");
             var newId = file.getId();
             var doc = DocumentApp.openById(newId);
             var formId = (FormApp.openByUrl(SpreadsheetApp.getActiveSpreadsheet().getFormUrl())).getId();
@@ -130,6 +130,7 @@ function sendEmails(e) {
                     var content = row[n];
                     //When the header is Email Address, obtain the supervisor email from the content (cell)
                     if (contentH == 'Email Address') {
+                       Logger.log(content);
                         supervisorEmail = content;
                     }
                     //When the header is Please enter the student's email, obtain the student's email from the content (cell)
@@ -441,6 +442,7 @@ function sendEmails(e) {
                 MailApp.sendEmail(supervisorEmail, subject, 'PMDip Student Performance Evaluation Form (Nutrition Care)', {
                     cc: studentEmail,
                     attachments: [pdf]
+                    
                 });
                 sheet.getRange(startRow + i, lastcolumn).setValue(EMAIL_SENT);
             } 
