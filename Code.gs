@@ -41,12 +41,12 @@ function sendEmails(e) {
         // Prevents sending duplicates
         if (((emailSent != EMAIL_SENT) && (emailSent != EDIT_MODE)) || ((emailSent == EDIT_MODE) && isEdit)) {
 
-            //When the header is 'Is this form complete' look at the response cell. If the response if Yes, the pdf email can be sent. If no,
+            //If the response is Yes, the pdf email can be sent. If no,
             //then the pdf email cannot be sent, and edit link will be sent via email, the response will be in Edit mode           
             var willSend = row[lastcolumn - 2];
             if (willSend == 'Yes') {
                 canSend = true;
-                sheet.getRange(startRow + i, lastcolumn).setValue(EMAIL_SENT);
+
             } else if (willSend == 'No') {
                 canSend = false;
             }
@@ -57,29 +57,10 @@ function sendEmails(e) {
 
             if (canSend) {
                 //table variables
-                var tableCounter = 0;
-                var tableCounter2 = 0;
-                var tableCounter3 = 0;
-                var tableCounter4 = 0;
-                var tableCounter5 = 0;
-                var tableCounter6 = 0;
-                var tableCounter7 = 0;
-                var tableCounter8 = 0;
-                var tableCounter9 = 0;
-                var tableCounter10 = 0;
-                var tableCounter11 = 0;
-                var tableCounter12 = 0;
-                var tableCounter13 = 0;
-                var tableCounter14 = 0;
-                var tableCounter15 = 0;
-                var tableCounter16 = 0;
-                var tableCounter17 = 0;
-                var tableCounter18 = 0;
-                var tableCounter19 = 0;
-                var tableCounter20 = 0;
-                var tableCounter21 = 0;
-                var tableCounter22 = 0;
-                var tableCounter23 = 0;
+                var tableCounters = new Array(22);
+                for (var tableCount = 0; tableCount < 23; tableCount++) {
+                    tableCounters[tableCount] = 0;
+                }
                 var tableQuestionCell = new Array();
                 var tableAnswerCell = new Array();
                 var tableQuestionCell2 = new Array();
@@ -161,253 +142,253 @@ function sendEmails(e) {
                         if (delVal1[0] == 'Nutrition Care: 3.01 Assess nutrition related risks and needs ') {
                             if (delVal1[1] != undefined) {
                                 var delVal2 = delVal1[1].split(delimeter2);
-                                tableQuestionCell[tableCounter] = delVal2[0];
-                                tableAnswerCell[tableCounter] = content;
+                                tableQuestionCell[tableCounters[0]] = delVal2[0];
+                                tableAnswerCell[tableCounters[0]] = content;
                                 var tableCols = getTableCols(headingsRange, dataH, lastcolumn, delVal1[0]);
-                                tableCounter++;
-                                if (tableCounter == tableCols) {
+                                tableCounters[0] += 1;
+                                if (tableCounters[0] == tableCols) {
                                     createTable(headingsRange, dataH, lastcolumn, data, body, tableCols, delVal1[0], tableQuestionCell, tableAnswerCell);
                                 }
                             }
                         } else if (delVal1[0] == 'Nutrition Care: 3.02 Develop nutrition care plans  ') {
                             if (delVal1[1] != undefined) {
                                 var delVal2 = delVal1[1].split(delimeter2);
-                                tableQuestionCell2[tableCounter2] = delVal2[0];
-                                tableAnswerCell2[tableCounter2] = content;
+                                tableQuestionCell2[tableCounters[1]] = delVal2[0];
+                                tableAnswerCell2[tableCounters[1]] = content;
                                 var tableCols = getTableCols(headingsRange, dataH, lastcolumn, delVal1[0]);
-                                tableCounter2++;
-                                if (tableCounter2 == tableCols) {
+                                tableCounters[1] += 1;
+                                if (tableCounters[1] == tableCols) {
                                     createTable(headingsRange, dataH, lastcolumn, data, body, tableCols, delVal1[0], tableQuestionCell2, tableAnswerCell2);
                                 }
                             }
                         } else if (delVal1[0] == 'Nutrition Care: 3.03 Manage implementation of nutrition care plans  ') {
                             if (delVal1[1] != undefined) {
                                 var delVal2 = delVal1[1].split(delimeter2);
-                                tableQuestionCell3[tableCounter3] = delVal2[0];
-                                tableAnswerCell3[tableCounter3] = content;
+                                tableQuestionCell3[tableCounters[2]] = delVal2[0];
+                                tableAnswerCell3[tableCounters[2]] = content;
                                 var tableCols = getTableCols(headingsRange, dataH, lastcolumn, delVal1[0]);
-                                tableCounter3++;
-                                if (tableCounter3 == tableCols) {
+                                tableCounters[2] += 1;
+                                if (tableCounters[2] == tableCols) {
                                     createTable(headingsRange, dataH, lastcolumn, data, body, tableCols, delVal1[0], tableQuestionCell3, tableAnswerCell3);
                                 }
                             }
                         } else if (delVal1[0] == 'Nutrition Care: 3.04 Evaluate and modify nutrition care plans as appropriate ') {
                             if (delVal1[1] != undefined) {
                                 var delVal2 = delVal1[1].split(delimeter2);
-                                tableQuestionCell4[tableCounter4] = delVal2[0];
-                                tableAnswerCell4[tableCounter4] = content;
+                                tableQuestionCell4[tableCounters[3]] = delVal2[0];
+                                tableAnswerCell4[tableCounters[3]] = content;
                                 var tableCols = getTableCols(headingsRange, dataH, lastcolumn, delVal1[0]);
-                                tableCounter4++;
-                                if (tableCounter4 == tableCols) {
+                                tableCounters[3] += 1;
+                                if (tableCounters[3] == tableCols) {
                                     createTable(headingsRange, dataH, lastcolumn, data, body, tableCols, delVal1[0], tableQuestionCell4, tableAnswerCell4);
                                 }
                             }
                         } else if (delVal1[0] == 'Professional Practice: 1.01 Comply with federal and provincial/territorial requirements relevant to dietetic practice ') {
                             if (delVal1[1] != undefined) {
                                 var delVal2 = delVal1[1].split(delimeter2);
-                                tableQuestionCell5[tableCounter5] = delVal2[0];
-                                tableAnswerCell5[tableCounter5] = content;
+                                tableQuestionCell5[tableCounters[4]] = delVal2[0];
+                                tableAnswerCell5[tableCounters[4]] = content;
                                 var tableCols = getTableCols(headingsRange, dataH, lastcolumn, delVal1[0]);
-                                tableCounter5++;
-                                if (tableCounter5 == tableCols) {
+                                tableCounters[4] += 1;
+                                if (tableCounters[4] == tableCols) {
                                     createTable(headingsRange, dataH, lastcolumn, data, body, tableCols, delVal1[0], tableQuestionCell5, tableAnswerCell5);
                                 }
                             }
                         } else if (delVal1[0] == 'Professional Practice: 1.02 Comply with regulatory requirements relevant to dietetic practice ') {
                             if (delVal1[1] != undefined) {
                                 var delVal2 = delVal1[1].split(delimeter2);
-                                tableQuestionCell6[tableCounter6] = delVal2[0];
-                                tableAnswerCell6[tableCounter6] = content;
+                                tableQuestionCell6[tableCounters[5]] = delVal2[0];
+                                tableAnswerCell6[tableCounters[5]] = content;
                                 var tableCols = getTableCols(headingsRange, dataH, lastcolumn, delVal1[0]);
-                                tableCounter6++;
-                                if (tableCounter6 == tableCols) {
+                                tableCounters[5] += 1;
+                                if (tableCounters[5] == tableCols) {
                                     createTable(headingsRange, dataH, lastcolumn, data, body, tableCols, delVal1[0], tableQuestionCell6, tableAnswerCell6);
                                 }
                             }
                         } else if (delVal1[0] == 'Professional Practice: 1.03 Practice according to organizational requirements ') {
                             if (delVal1[1] != undefined) {
                                 var delVal2 = delVal1[1].split(delimeter2);
-                                tableQuestionCell7[tableCounter7] = delVal2[0];
-                                tableAnswerCell7[tableCounter7] = content;
+                                tableQuestionCell7[tableCounters[6]] = delVal2[0];
+                                tableAnswerCell7[tableCounters[6]] = content;
                                 var tableCols = getTableCols(headingsRange, dataH, lastcolumn, delVal1[0]);
-                                tableCounter7++;
-                                if (tableCounter7 == tableCols) {
+                                tableCounters[6] += 1;
+                                if (tableCounters[6] == tableCols) {
                                     createTable(headingsRange, dataH, lastcolumn, data, body, tableCols, delVal1[0], tableQuestionCell7, tableAnswerCell7);
                                 }
                             }
                         } else if (delVal1[0] == 'Professional Practice: 1.04 Practice within limits of individual level of professional knowledge and skills ') {
                             if (delVal1[1] != undefined) {
                                 var delVal2 = delVal1[1].split(delimeter2);
-                                tableQuestionCell8[tableCounter8] = delVal2[0];
-                                tableAnswerCell8[tableCounter8] = content;
+                                tableQuestionCell8[tableCounters[7]] = delVal2[0];
+                                tableAnswerCell8[tableCounters[7]] = content;
                                 var tableCols = getTableCols(headingsRange, dataH, lastcolumn, delVal1[0]);
-                                tableCounter8++;
-                                if (tableCounter8 == tableCols) {
+                                tableCounters[7] += 1;
+                                if (tableCounters[7] == tableCols) {
                                     createTable(headingsRange, dataH, lastcolumn, data, body, tableCols, delVal1[0], tableQuestionCell8, tableAnswerCell8);
                                 }
                             }
                         } else if (delVal1[0] == 'Professional Practice: 1.05 Address professional development needs ') {
                             if (delVal1[1] != undefined) {
                                 var delVal2 = delVal1[1].split(delimeter2);
-                                tableQuestionCell9[tableCounter9] = delVal2[0];
-                                tableAnswerCell9[tableCounter9] = content;
+                                tableQuestionCell9[tableCounters[8]] = delVal2[0];
+                                tableAnswerCell9[tableCounters[8]] = content;
                                 var tableCols = getTableCols(headingsRange, dataH, lastcolumn, delVal1[0]);
-                                tableCounter9++;
-                                if (tableCounter9 == tableCols) {
+                                tableCounters[8] += 1;
+                                if (tableCounters[8] == tableCols) {
                                     createTable(headingsRange, dataH, lastcolumn, data, body, tableCols, delVal1[0], tableQuestionCell9, tableAnswerCell9);
                                 }
                             }
                         } else if (delVal1[0] == 'Professional Practice: 1.06 Use a systematic approach to decision making ') {
                             if (delVal1[1] != undefined) {
                                 var delVal2 = delVal1[1].split(delimeter2);
-                                tableQuestionCell10[tableCounter10] = delVal2[0];
-                                tableAnswerCell10[tableCounter10] = content;
+                                tableQuestionCell10[tableCounters[9]] = delVal2[0];
+                                tableAnswerCell10[tableCounters[9]] = content;
                                 var tableCols = getTableCols(headingsRange, dataH, lastcolumn, delVal1[0]);
-                                tableCounter10++;
-                                if (tableCounter10 == tableCols) {
+                                tableCounters[9] += 1;
+                                if (tableCounters[9] == tableCols) {
                                     createTable(headingsRange, dataH, lastcolumn, data, body, tableCols, delVal1[0], tableQuestionCell10, tableAnswerCell10);
                                 }
                             }
                         } else if (delVal1[0] == 'Professional Practice: 1.07 Maintain a client-centred focus ') {
                             if (delVal1[1] != undefined) {
                                 var delVal2 = delVal1[1].split(delimeter2);
-                                tableQuestionCell11[tableCounter11] = delVal2[0];
-                                tableAnswerCell11[tableCounter11] = content;
+                                tableQuestionCell11[tableCounters[10]] = delVal2[0];
+                                tableAnswerCell11[tableCounters[10]] = content;
                                 var tableCols = getTableCols(headingsRange, dataH, lastcolumn, delVal1[0]);
-                                tableCounter11++;
-                                if (tableCounter11 == tableCols) {
+                                tableCounters[10] += 1;
+                                if (tableCounters[10] == tableCols) {
                                     createTable(headingsRange, dataH, lastcolumn, data, body, tableCols, delVal1[0], tableQuestionCell11, tableAnswerCell11);
                                 }
                             }
                         } else if (delVal1[0] == 'Professional Practice: 1.08 Manage time and workload effectively ') {
                             if (delVal1[1] != undefined) {
                                 var delVal2 = delVal1[1].split(delimeter2);
-                                tableQuestionCell12[tableCounter12] = delVal2[0];
-                                tableAnswerCell12[tableCounter12] = content;
+                                tableQuestionCell12[tableCounters[11]] = delVal2[0];
+                                tableAnswerCell12[tableCounters[11]] = content;
                                 var tableCols = getTableCols(headingsRange, dataH, lastcolumn, delVal1[0]);
-                                tableCounter12++;
-                                if (tableCounter12 == tableCols) {
+                                tableCounters[11] += 1;
+                                if (tableCounters[11] == tableCols) {
                                     createTable(headingsRange, dataH, lastcolumn, data, body, tableCols, delVal1[0], tableQuestionCell12, tableAnswerCell12);
                                 }
                             }
                         } else if (delVal1[0] == 'Professional Practice: 1.09 Use technologies to support practice ') {
                             if (delVal1[1] != undefined) {
                                 var delVal2 = delVal1[1].split(delimeter2);
-                                tableQuestionCell13[tableCounter13] = delVal2[0];
-                                tableAnswerCell13[tableCounter13] = content;
+                                tableQuestionCell13[tableCounters[12]] = delVal2[0];
+                                tableAnswerCell13[tableCounters[12]] = content;
                                 var tableCols = getTableCols(headingsRange, dataH, lastcolumn, delVal1[0]);
-                                tableCounter13++;
-                                if (tableCounter13 == tableCols) {
+                                tableCounters[12] += 1;
+                                if (tableCounters[12] == tableCols) {
                                     createTable(headingsRange, dataH, lastcolumn, data, body, tableCols, delVal1[0], tableQuestionCell13, tableAnswerCell13);
                                 }
                             }
                         } else if (delVal1[0] == 'Professional Practice: 1.10 Ensure appropriate and secure documentation ') {
                             if (delVal1[1] != undefined) {
                                 var delVal2 = delVal1[1].split(delimeter2);
-                                tableQuestionCell14[tableCounter14] = delVal2[0];
-                                tableAnswerCell14[tableCounter14] = content;
+                                tableQuestionCell14[tableCounters[13]] = delVal2[0];
+                                tableAnswerCell14[tableCounters[13]] = content;
                                 var tableCols = getTableCols(headingsRange, dataH, lastcolumn, delVal1[0]);
-                                tableCounter14++;
-                                if (tableCounter14 == tableCols) {
+                                tableCounters[13] += 1;
+                                if (tableCounters[13] == tableCols) {
                                     createTable(headingsRange, dataH, lastcolumn, data, body, tableCols, delVal1[0], tableQuestionCell14, tableAnswerCell14);
                                 }
                             }
                         } else if (delVal1[0] == 'Professional Practice: 1.11 Assess and enhance approaches to dietetic practice ') {
                             if (delVal1[1] != undefined) {
                                 var delVal2 = delVal1[1].split(delimeter2);
-                                tableQuestionCell15[tableCounter15] = delVal2[0];
-                                tableAnswerCell15[tableCounter15] = content;
+                                tableQuestionCell15[tableCounters[14]] = delVal2[0];
+                                tableAnswerCell15[tableCounters[14]] = content;
                                 var tableCols = getTableCols(headingsRange, dataH, lastcolumn, delVal1[0]);
-                                tableCounter15++;
-                                if (tableCounter15 == tableCols) {
+                                tableCounters[14] += 1;
+                                if (tableCounters[14] == tableCols) {
                                     createTable(headingsRange, dataH, lastcolumn, data, body, tableCols, delVal1[0], tableQuestionCell15, tableAnswerCell15);
                                 }
                             }
                         } else if (delVal1[0] == 'Professional Practice: 1.12 Contribute to advocacy efforts related to nutrition and health ') {
                             if (delVal1[1] != undefined) {
                                 var delVal2 = delVal1[1].split(delimeter2);
-                                tableQuestionCell16[tableCounter16] = delVal2[0];
-                                tableAnswerCell16[tableCounter16] = content;
+                                tableQuestionCell16[tableCounters[15]] = delVal2[0];
+                                tableAnswerCell16[tableCounters[15]] = content;
                                 var tableCols = getTableCols(headingsRange, dataH, lastcolumn, delVal1[0]);
-                                tableCounter16++;
-                                if (tableCounter16 == tableCols) {
+                                tableCounters[15] += 1;
+                                if (tableCounters[15] == tableCols) {
                                     createTable(headingsRange, dataH, lastcolumn, data, body, tableCols, delVal1[0], tableQuestionCell16, tableAnswerCell16);
                                 }
                             }
                         } else if (delVal1[0] == 'Professional Practice: 1.13 Participate in practice-based research ') {
                             if (delVal1[1] != undefined) {
                                 var delVal2 = delVal1[1].split(delimeter2);
-                                tableQuestionCell17[tableCounter17] = delVal2[0];
-                                tableAnswerCell17[tableCounter17] = content;
+                                tableQuestionCell17[tableCounters[16]] = delVal2[0];
+                                tableAnswerCell17[tableCounters[16]] = content;
                                 var tableCols = getTableCols(headingsRange, dataH, lastcolumn, delVal1[0]);
-                                tableCounter17++;
-                                if (tableCounter17 == tableCols) {
+                                tableCounters[16] += 1;
+                                if (tableCounters[16] == tableCols) {
                                     createTable(headingsRange, dataH, lastcolumn, data, body, tableCols, delVal1[0], tableQuestionCell17, tableAnswerCell17);
                                 }
                             }
                         } else if (delVal1[0] == 'Communication and Collaboration: 2.01 Select appropriate communication approaches ') {
                             if (delVal1[1] != undefined) {
                                 var delVal2 = delVal1[1].split(delimeter2);
-                                tableQuestionCell18[tableCounter18] = delVal2[0];
-                                tableAnswerCell18[tableCounter18] = content;
+                                tableQuestionCell18[tableCounters[17]] = delVal2[0];
+                                tableAnswerCell18[tableCounters[17]] = content;
                                 var tableCols = getTableCols(headingsRange, dataH, lastcolumn, delVal1[0]);
-                                tableCounter18++;
-                                if (tableCounter18 == tableCols) {
+                                tableCounters[17] += 1;
+                                if (tableCounters[17] == tableCols) {
                                     createTable(headingsRange, dataH, lastcolumn, data, body, tableCols, delVal1[0], tableQuestionCell18, tableAnswerCell18);
                                 }
                             }
                         } else if (delVal1[0] == 'Communication and Collaboration: 2.02 Use effective written communication skills ') {
                             if (delVal1[1] != undefined) {
                                 var delVal2 = delVal1[1].split(delimeter2);
-                                tableQuestionCell19[tableCounter19] = delVal2[0];
-                                tableAnswerCell19[tableCounter19] = content;
+                                tableQuestionCell19[tableCounters[18]] = delVal2[0];
+                                tableAnswerCell19[tableCounters[18]] = content;
                                 var tableCols = getTableCols(headingsRange, dataH, lastcolumn, delVal1[0]);
-                                tableCounter19++;
-                                if (tableCounter19 == tableCols) {
+                                tableCounters[18] += 1;
+                                if (tableCounters[18] == tableCols) {
                                     createTable(headingsRange, dataH, lastcolumn, data, body, tableCols, delVal1[0], tableQuestionCell19, tableAnswerCell19);
                                 }
                             }
                         } else if (delVal1[0] == 'Communication and Collaboration: 2.03 Use effective oral communication skills ') {
                             if (delVal1[1] != undefined) {
                                 var delVal2 = delVal1[1].split(delimeter2);
-                                tableQuestionCell20[tableCounter20] = delVal2[0];
-                                tableAnswerCell20[tableCounter20] = content;
+                                tableQuestionCell20[tableCounters[19]] = delVal2[0];
+                                tableAnswerCell20[tableCounters[19]] = content;
                                 var tableCols = getTableCols(headingsRange, dataH, lastcolumn, delVal1[0]);
-                                tableCounter20++;
-                                if (tableCounter20 == tableCols) {
+                                tableCounters[19] += 1;
+                                if (tableCounters[19] == tableCols) {
                                     createTable(headingsRange, dataH, lastcolumn, data, body, tableCols, delVal1[0], tableQuestionCell20, tableAnswerCell20);
                                 }
                             }
                         } else if (delVal1[0] == 'Communication and Collaboration: 2.04 Use effective interpersonal skills ') {
                             if (delVal1[1] != undefined) {
                                 var delVal2 = delVal1[1].split(delimeter2);
-                                tableQuestionCell21[tableCounter21] = delVal2[0];
-                                tableAnswerCell21[tableCounter21] = content;
+                                tableQuestionCell21[tableCounters[20]] = delVal2[0];
+                                tableAnswerCell21[tableCounters[20]] = content;
                                 var tableCols = getTableCols(headingsRange, dataH, lastcolumn, delVal1[0]);
-                                tableCounter21++;
-                                if (tableCounter21 == tableCols) {
+                                tableCounters[20] += 1;
+                                if (tableCounters[20] == tableCols) {
                                     createTable(headingsRange, dataH, lastcolumn, data, body, tableCols, delVal1[0], tableQuestionCell21, tableAnswerCell21);
                                 }
                             }
                         } else if (delVal1[0] == 'Communication and Collaboration: 2.05 Contribute to the learning of others ') {
                             if (delVal1[1] != undefined) {
                                 var delVal2 = delVal1[1].split(delimeter2);
-                                tableQuestionCell22[tableCounter22] = delVal2[0];
-                                tableAnswerCell22[tableCounter22] = content;
+                                tableQuestionCell22[tableCounters[21]] = delVal2[0];
+                                tableAnswerCell22[tableCounters[21]] = content;
                                 var tableCols = getTableCols(headingsRange, dataH, lastcolumn, delVal1[0]);
-                                tableCounter22++;
-                                if (tableCounter22 == tableCols) {
+                                tableCounters[21] += 1;
+                                if (tableCounters[21] == tableCols) {
                                     createTable(headingsRange, dataH, lastcolumn, data, body, tableCols, delVal1[0], tableQuestionCell22, tableAnswerCell22);
                                 }
                             }
                         } else if (delVal1[0] == 'Communication and Collaboration: 2.06 Contribute productively to teamwork and collaborative processes ') {
                             if (delVal1[1] != undefined) {
                                 var delVal2 = delVal1[1].split(delimeter2);
-                                tableQuestionCell23[tableCounter23] = delVal2[0];
-                                tableAnswerCell23[tableCounter23] = content;
+                                tableQuestionCell23[tableCounters[22]] = delVal2[0];
+                                tableAnswerCell23[tableCounters[22]] = content;
                                 var tableCols = getTableCols(headingsRange, dataH, lastcolumn, delVal1[0]);
-                                tableCounter23++;
-                                if (tableCounter23 == tableCols) {
+                                tableCounters[22] += 1;
+                                if (tableCounters[22] == tableCols) {
                                     createTable(headingsRange, dataH, lastcolumn, data, body, tableCols, delVal1[0], tableQuestionCell23, tableAnswerCell23);
                                 }
                             }
@@ -449,6 +430,7 @@ function sendEmails(e) {
                     attachments: [pdf]
                 });
                 sheet.getRange(startRow + i, lastcolumn).setValue(EMAIL_SENT);
+
             }
             //If the pdf email cannot be sent, get the edit url
             //Create the email, with a subject, title, and the edit url
