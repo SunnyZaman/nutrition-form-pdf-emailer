@@ -8,6 +8,7 @@ function sendEmails(e) {
     var studentEmail;
     var sheet = SpreadsheetApp.getActiveSheet();
     var isEdit = false;
+  var isEditing = false;
     var responseUrl = new Array();
 
     //Sort the responses by timestamps
@@ -38,8 +39,12 @@ function sendEmails(e) {
         if (emailSent == EDIT_MODE && i == rowlast) {
             isEdit = true;
         }
+      //Allows uers to edit (and recieve PDF) after submitting the form
+       if (emailSent == EMAIL_SENT && i == rowlast) {
+            isEditing = true;
+        }
         // Prevents sending duplicates
-        if (((emailSent != EMAIL_SENT) && (emailSent != EDIT_MODE)) || ((emailSent == EDIT_MODE) && isEdit)) {
+        if (((emailSent != EMAIL_SENT) && (emailSent != EDIT_MODE)) || ((emailSent == EDIT_MODE) && isEdit) || isEditing) {
 
             //If the response is Yes, the pdf email can be sent. If no,
             //then the pdf email cannot be sent, and edit link will be sent via email, the response will be in Edit mode           
